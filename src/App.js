@@ -14,8 +14,8 @@ class App extends Component {
         </div>
         <div className="container-fluid d-flex flex-column">
           <div style={{height:100}}></div>
-          <div className="d-flex justify-content-center">
-            <h1 className="display-4">Easily start by </h1>
+          <div className="d-flex justify-content-center flex-wrap">
+            <h1>Easily start by </h1>
             <button type="button" style={{marginLeft: 20}} class="btn btn-outline-dark btn-lg">Upload Photo</button>
           </div>
           <div style={{height:100}}></div>
@@ -38,7 +38,7 @@ class App extends Component {
           </div>
           <div style={{height:100}}></div>
           <div className="d-flex justify-content-center">
-            <h1 className="display-4">Demo</h1>
+            <h1>Demo</h1>
           </div>
           <div className="d-flex justify-content-around ">
             <div className="d-flex flex-column">
@@ -54,7 +54,7 @@ class App extends Component {
           <div style={{height:100}}></div>
         </div>
         <div className="jumbotron" style={{margin:0, minHeight: 300}}>
-          <p>Created by: BooBoo Team</p>
+          <p className="lead">Created by: BooBoo Team</p>
         </div>
       </div>
     );

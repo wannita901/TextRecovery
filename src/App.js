@@ -9,31 +9,33 @@ class App extends Component {
       <div>
         <div className="jumbotron">
           <h1 className="display-4">Text Recovery</h1>
-          <p className="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-          <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+          <p className="lead">This is a simple hero website to recover the damaged text with crossing lines in order to imporve OCR method.</p>
         </div>
         <div className="container-fluid d-flex flex-column">
           <div style={{height:100}}></div>
           <div className="d-flex justify-content-center flex-wrap">
             <h1>Easily start by </h1>
-            <button type="button" style={{marginLeft: 20}} class="btn btn-outline-dark btn-lg">Upload Photo</button>
+            <div class="custom-file" style={{width: 250, margin:10}}>
+              <input type="file" class="custom-file-input" id="customFile" />
+              <label class="custom-file-label" for="customFile">Choose file</label>
+            </div>
           </div>
           <div style={{height:100}}></div>
           <div className="d-flex justify-content-around flex-wrap">
             <div className="d-flex flex-column">
               <i class="fas fa-book-open fa-3x"></i>
               <h4>Readable</h4>
-              <p>lorem ipsum lorem ipsum</p>
+              <p>Make your text be readable again.</p>
             </div>
             <div className="d-flex flex-column">
               <i class="far fa-images fa-3x"></i>
               <h4>Uploading</h4>
-              <p>lorem ipsum lorem ipsum</p>
+              <p>Could upload from any devices.</p>
             </div>
             <div className="d-flex flex-column">
               <i class="fas fa-magic fa-3x"></i>
               <h4>Easy</h4>
-              <p>lorem ipsum lorem ipsum</p>
+              <p>Only few clicks to complete the function.</p>
             </div>
           </div>
           <div style={{height:100}}></div>

@@ -5,7 +5,6 @@ import demoPhotoAT from './demo_future.jpg'
 import { image } from 'ansi-escapes'
 import { Button } from 'reactstrap'
 import axios from 'axios'
-import download from 'downloadjs'
 
 class App extends Component {
   constructor() {

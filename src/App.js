@@ -14,11 +14,20 @@ class App extends Component {
       selectedImageName: 'Choose File'
     }
   }
+
+  getFileExtension = (filename) => {
+    return filename.split('.').pop();
+  }
+
   imageSelectHandler = event => {
+    if (this.getFileExtension(event.target.files[0].name) === 'jpg' || this.getFileExtension(event.target.files[0].name) === 'png') {
     this.setState({ 
       selectedImage: event.target.files[0] === undefined ?  null : event.target.files[0],
       selectedImageName: event.target.files[0] === undefined ? 'Choose File' : event.target.files[0].name
     })
+    } else {
+      alert('Your Image is not a .jpg or .png file')
+    }
   }
 
   imageUploadHandler = async () => {

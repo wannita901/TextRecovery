@@ -2,8 +2,41 @@ import React, { Component } from 'react';
 import './App.css';
 import demoPhotoB4 from './demo.jpg'
 import demoPhotoAT from './demo_future.jpg'
+import { image } from 'ansi-escapes'
+import { Button } from 'reactstrap'
+import axios from 'axios'
+import download from 'downloadjs'
 
 class App extends Component {
+  constructor() {
+    super()
+    this.state = {
+      selectedImage: null,
+      selectedImageName: 'Choose File'
+    }
+  }
+  imageSelectHandler = event => {
+    this.setState({ 
+      selectedImage: event.target.files[0] === undefined ?  null : event.target.files[0],
+      selectedImageName: event.target.files[0] === undefined ? 'Choose File' : event.target.files[0].name
+    })
+  }
+
+  imageUploadHandler = async () => {
+    const fd = new FormData()
+    fd.append('file', this.state.selectedImage, this.state.selectedImageName)
+    const upload = await axios.post('http://34.80.127.254:7777/get_clean', fd, {
+      responseType: 'arraybuffer'
+    })
+    if (upload) {
+      const url = window.URL.createObjectURL(new Blob([upload.data]));
+      const link = document.createElement('a');
+      link.href = url;
+      link.setAttribute('download', 'cleanedImage.jpg'); //or any other extension
+      document.body.appendChild(link);
+      link.click();
+    }
+  }
   render() {
     return (
       <div>
@@ -16,9 +49,10 @@ class App extends Component {
           <div className="d-flex justify-content-center flex-wrap">
             <h1>Easily start by </h1>
             <div class="custom-file" style={{width: 250, margin:10}}>
-              <input type="file" class="custom-file-input" id="customFile" />
-              <label class="custom-file-label" for="customFile">Choose file</label>
-            </div>
+              <input type="file" class="custom-file-input" id="customFile" onChange={this.imageSelectHandler}/>
+              <label className="custom-file-label" for="customFile">{this.state.selectedImageName}</label>
+              <Button onClick={this.imageUploadHandler}>Upload</Button>
+              </div>
           </div>
           <div style={{height:100}}></div>
           <div className="d-flex justify-content-around flex-wrap">
